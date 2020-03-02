@@ -11,3 +11,33 @@ CONSTRAINTS
 
 
 
+/* 
+I 
+O  writing a random number less than 10 to a file in three seconds
+C use all these functions
+E
+ */
+const getNumLessThanTen = require('./getNumLessThan.js')
+const waitOneSecond = require("./waitOneSecond.js")
+const writeToHardDrive = require('./writeToHardDrive')
+
+ const main = function(){
+     //get10
+     getNumLessThanTen((err, numData) =>{
+         waitOneSecond((err, message) => {
+             waitOneSecond((err, message) => {
+                waitOneSecond((err, message) => {
+                    writeToHardDrive(numData, (err, message) => {
+                        if(err) {
+                            throw(err)
+                        } else{console.log('im done');}
+                    })
+                })
+             })
+         })
+     })
+     //wait 1 second 3 times
+     //write to file
+ }
+
+ main();
